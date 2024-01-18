@@ -1,0 +1,4 @@
+com\pee\dockerized\postgresql\user\UserRepository.class
+com\pee\dockerized\postgresql\user\UserController.class
+com\pee\dockerized\postgresql\Application.class
+com\pee\dockerized\postgresql\user\User.class
