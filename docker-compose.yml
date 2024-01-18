@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+
+  java_app:
+    container_name: java_app
+    image: pee-java_app:1.0.0
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_URL=jdbc:postgresql://java_db:5432/postgres
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      ##Esto se utiliza para que el contenedor no se levante y no intente la conexion hasta que el servicio indicado este levantado
+    depends_on:
+      - java_db
+  java_db:
+    container_name: java_db
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+      ##Utilizar mvn clean package -DskipTests
+      ##docker-compose build 
+      ##docker-compose up
+      ##Usar Postman o ThunderClient y hacer una llamada a http://localhost:8080/api/users
